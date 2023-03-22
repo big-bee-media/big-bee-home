@@ -42,7 +42,13 @@ export default function Home() {
 
         {/* Start Portfolio  */}
         <div id="portfolio" className="designer-portfolio-area ptb--120 bg_color--1">
-          <PortfolioGrid column="col-lg-4 col-md-6 col-sm-6 col-12" />
+          <div className='container-fluid'>
+            <div className="row">
+              <div className="col-lg-12">
+                <PortfolioGrid />
+              </div>
+            </div>
+          </div>
         </div>
         {/* End Portfolio  */}
 
@@ -53,7 +59,7 @@ export default function Home() {
               <div className="row">
                 <div className="col-lg-12">
                   <div className="section-title text-center service-style--3 mb--30 mb_sm--0">
-                    <h2 className="title">Our Service</h2>
+                    <h2 className="theme-gradient">Our Service</h2>
                     <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.</p>
                   </div>
                 </div>
