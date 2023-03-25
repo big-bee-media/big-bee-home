@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    unoptimized: true
+    unoptimized: false
   },
   webpack: (config, options) => {
     config.module.rules.push({
@@ -15,7 +15,7 @@ const nextConfig = {
     })
 
     return config
-  },
+  }
 }
 
 module.exports = nextConfig
