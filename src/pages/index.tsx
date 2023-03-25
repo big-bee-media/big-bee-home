@@ -1,10 +1,30 @@
+import { useRef } from 'react'
 import Head from 'next/head'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import ServiceGrid from '@/components/service-grid'
 import PortfolioGrid from '@/components/tab-three'
+import { useSpring, animated } from '@react-spring/web'
+
 
 export default function Home() {
+  const sectionPortfolio = useRef<any>()
+
+  const sloganStyles = useSpring({
+    from: { opacity: 0, x: '1000px' },
+    to: { opacity: 1, x: '0px' },
+  })
+
+  const logoStyles = useSpring({
+    from: { opacity: 0, y: '-1000px' },
+    to: { opacity: 1, y: '0px' },
+  })
+
+  const ctaStyles = useSpring({
+    from: { opacity: 0, y: '1000px' },
+    to: { opacity: 1, y: '0px' },
+  })
+
   return (
     <>
       <Head>
@@ -16,33 +36,37 @@ export default function Home() {
       <main>
         <Header color="color-black" />
         {/* Start Slider Area   */}
-        <div className="prv-banner-wrapper"
-          style={{ backgroundImage: 'url(images/preview-bg.jpg)' }}>
-          <div className="container-fluid">
-            <div className="plr--120">
-              <div className="row">
-                <div className="col-lg-8 col-xl-5">
-                  <div className="inner">
-                    <div className="logo text-left">
-                      <img src="icons/logo.png" alt="BigBee" />
-                      <span style={{ fontSize: '1.6em', marginLeft: '10px' }}>BigBee</span>
-                    </div>
-                    <p className="title">Embrace your moments</p>
-                    <div className="contact-btn">
-                      <a href="https://themeforest.net/checkout/from_item/25457315?license=regular" target="_blank" className="rn-button-style--2 btn-solid">Contact US</a>
+        <div id='home'>
+          <div
+            className="prv-banner-wrapper"
+            style={{ backgroundImage: 'url(images/preview-bg.jpg)' }}
+          >
+            <div className="container-fluid">
+              <div className="plr--120">
+                <div className="row">
+                  <div className="col-lg-8 col-xl-5">
+                    <div className="inner">
+                      <animated.div className="logo" style={logoStyles}>
+                        <img src="icons/logo.png" alt="BigBee" />
+                        <span style={{ fontSize: '1.6em', marginLeft: '10px' }}>BigBee</span>
+                      </animated.div>
+                      <animated.div className="title" style={sloganStyles}>Embrace your moments</animated.div>
+                      <animated.div className="cta-btn" style={ctaStyles}>
+                        <a href="#contact" target="_blank" className="rn-button-style--2 btn-solid">Contact US</a>
+                      </animated.div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <div className="fullscreen empty-div gradient-overlay" />
         </div>
-        <div id='home' className="fullscreen empty-div gradient-overlay"></div>
         {/* End Slider Area   */}
 
         {/* Start Portfolio  */}
-        <div id="portfolio" className="designer-portfolio-area ptb--120 bg_color--1">
-          <div className='container-fluid'>
+        <div ref={sectionPortfolio} id="portfolio" className="poss_relative ptb--120 bg_color--1">
+          <div className='container'>
             <div className="row">
               <div className="col-lg-12">
                 <PortfolioGrid />
@@ -54,7 +78,7 @@ export default function Home() {
 
         {/* Our service */}
         <div id="service" className="fix">
-          <div className="service-area creative-service-wrapper ptb--120 bg_color--5" >
+          <div className="poss_relative ptb--120 bg_color--5" >
             <div className="container">
               <div className="row">
                 <div className="col-lg-12">
@@ -73,9 +97,9 @@ export default function Home() {
           </div>
         </div>
         {/* End our service */}
-
-        <Footer />
-        <div id='contact' />
+        <div id='contact'>
+          <Footer />
+        </div>
       </main>
     </>
   )
