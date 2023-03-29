@@ -13,10 +13,10 @@ import Image from 'next/image';
 import styles from './styles.module.scss';
 
 const SocialShare = [
-    { Social: <FaFacebookF />, link: 'https://www.facebook.com/' },
-    { Social: <FaLinkedinIn />, link: 'https://www.linkedin.com/' },
-    { Social: <FaInstagram />, link: 'https://www.instagram.com/' },
-    { Social: <FaTwitter />, link: 'https://twitter.com/' },
+    { Social: <FaFacebookF />, link: 'https://www.facebook.com/thebigbeemedia' },
+    // { Social: <FaLinkedinIn />, link: 'https://www.linkedin.com/' },
+    // { Social: <FaInstagram />, link: 'https://www.instagram.com/' },
+    // { Social: <FaTwitter />, link: 'https://twitter.com/' },
 ]
 const Header = ({ color }: { color: string }) => {
     const menuTrigger = () => {
@@ -52,7 +52,7 @@ const Header = ({ color }: { color: string }) => {
                             <li><a href="#home">Home</a></li>
                             <li><a href="#portfolio">Portfolio</a></li>
                             <li><a href="#service">Service</a></li>
-                            <li><a href="#contact">Contact</a></li>
+                            <li><a target='_blank' href="https://www.facebook.com/thebigbeemedia">Contact</a></li>
                         </Scrollspy>
                     </nav>
                 </div>

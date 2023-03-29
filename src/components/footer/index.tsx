@@ -5,10 +5,10 @@ import { FaFacebookF } from "@react-icons/all-files/fa/FaFacebookF";
 import { FaLinkedinIn } from "@react-icons/all-files/fa/FaLinkedinIn";
 
 const SocialShare = [
-    { Social: <FaFacebookF />, link: 'https://www.facebook.com/' },
-    { Social: <FaLinkedinIn />, link: 'https://www.linkedin.com/' },
-    { Social: <FaInstagram />, link: 'https://www.instagram.com/' },
-    { Social: <FaTwitter />, link: 'https://twitter.com/' },
+    { Social: <FaFacebookF />, link: 'https://www.facebook.com/thebigbeemedia' },
+    // { Social: <FaLinkedinIn />, link: 'https://www.linkedin.com/' },
+    // { Social: <FaInstagram />, link: 'https://www.instagram.com/' },
+    // { Social: <FaTwitter />, link: 'https://twitter.com/' },
 ]
 
 class Footer extends Component {
@@ -23,7 +23,7 @@ class Footer extends Component {
                                     <div className="inner">
                                         <span>Ready To Do This</span>
                                         <h2>Let&apos;s get <br /> to work</h2>
-                                        <a className="rn-button-style--2" href="/contact">
+                                        <a className="rn-button-style--2" href="https://www.facebook.com/thebigbeemedia" target={'_blank'}>
                                             <span>Contact Us</span>
                                         </a>
                                     </div>
@@ -37,9 +37,9 @@ class Footer extends Component {
                                             <div className="footer-link">
                                                 <h4>Quick Link</h4>
                                                 <ul className="ft-link">
-                                                    <li><a href="/portfolio">Work</a></li>
-                                                    <li><a href="/about">About</a></li>
-                                                    <li><a href="/contact">Let&apos;s Talk</a></li>
+                                                    <li><a href="#portfolio">Portfolio</a></li>
+                                                    <li><a href="#service">Service</a></li>
+                                                    <li><a target={'_blank'} href="https://www.facebook.com/thebigbeemedia">Let&apos;s Talk</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -48,10 +48,10 @@ class Footer extends Component {
                                         <div className="col-lg-6 col-sm-6 col-12 mt_mobile--30">
                                             <div className="footer-link">
                                                 <h4>Say Hello</h4>
-                                                <ul className="ft-link">
+                                                {/* <ul className="ft-link">
                                                     <li><a href="mailto:admin@example.com">admin@example.com</a></li>
                                                     <li><a href="mailto:hr@example.com">hr@example.com</a></li>
-                                                </ul>
+                                                </ul> */}
 
                                                 <div className="social-share-inner">
                                                     <ul className="social-share social-style--2 d-flex justify-content-start liststyle mt--15">
@@ -66,7 +66,7 @@ class Footer extends Component {
 
                                         <div className="col-lg-12">
                                             <div className="copyright-text">
-                                                <p>Copyright © 2022 Rainbow-Themes. All Rights Reserved.</p>
+                                                <p>{`©${new Date().getFullYear()} BigBeeMedia. All rights reserved.`}</p>
                                             </div>
                                         </div>
                                     </div>

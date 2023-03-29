@@ -3,8 +3,10 @@ import Head from 'next/head'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import ServiceGrid from '@/components/service-grid'
-import PortfolioGrid from '@/components/tab-three'
+import PortfolioGrid from '@/components/portfolio'
 import { useSpring, animated } from '@react-spring/web'
+import Image from 'next/image'
+import OurFact from '@/components/OurFact'
 
 
 export default function Home() {
@@ -28,7 +30,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>BigBee media</title>
+        <title>BigBee Media</title>
         <meta name="description" content="BigBee media" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -47,7 +49,7 @@ export default function Home() {
                   <div className="col-lg-8 col-xl-5">
                     <div className="inner">
                       <animated.div className="logo" style={logoStyles}>
-                        <img src="icons/logo.png" alt="BigBee" />
+                        <Image src="/icons/logo.png" alt="BigBee" width={'50'} height={'50'} />
                         <span style={{ fontSize: '1.6em', marginLeft: '10px' }}>BigBee</span>
                       </animated.div>
                       <animated.div className="title" style={sloganStyles}>Embrace your moments</animated.div>
@@ -66,7 +68,7 @@ export default function Home() {
 
         {/* Start Portfolio  */}
         <div ref={sectionPortfolio} id="portfolio" className="poss_relative ptb--120 bg_color--1">
-          <div className='container'>
+          <div className='container-fluid'>
             <div className="row">
               <div className="col-lg-12">
                 <PortfolioGrid />
@@ -97,6 +99,22 @@ export default function Home() {
           </div>
         </div>
         {/* End our service */}
+
+        {/* Start CounterUp Area */}
+        <div className="poss_relative rn-counterup-area pt--140 p pb--110 bg_color--1">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-12">
+                <div className="section-title text-center">
+                  <h3 className="fontWeight500">Our Fun Facts</h3>
+                </div>
+              </div>
+            </div>
+            <OurFact />
+          </div>
+        </div>
+        {/* End CounterUp Area */}
+
         <div id='contact'>
           <Footer />
         </div>
