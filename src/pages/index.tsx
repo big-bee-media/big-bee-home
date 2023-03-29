@@ -105,8 +105,8 @@ export default function Home() {
           <div className="container">
             <div className="row">
               <div className="col-lg-12">
-                <div className="section-title text-center">
-                  <h3 className="fontWeight500">Our Fun Facts</h3>
+                <div className="section-title text-center service-style--3 mb--30 mb_sm--0">
+                  <h2 style={{ color: '#1f1f2582' }}>Our Fun Facts</h2>
                 </div>
               </div>
             </div>
