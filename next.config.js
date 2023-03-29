@@ -5,7 +5,7 @@ const nextConfig = {
     '/': { page: '/' },
   }),
   images: {
-    unoptimized: true
+    unoptimized: false
   },
   webpack: (config, options) => {
     config.module.rules.push({

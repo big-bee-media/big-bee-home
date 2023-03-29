@@ -89,9 +89,12 @@ const AlbumGrid = ({ images, name }: { images: Image[], name: string }) => {
                             quality={100}
                             src={image.src}
                             alt={image.category}
-                            sizes="(max-width: 768px) 100vw,
-                            (max-width: 1200px) 50vw,
-                            33vw"
+                            sizes="
+                            // (min-width: 1200px) 50vw,
+                            // (min-width: 1024px) 80vw,
+                            // (min-width: 768px) 100vw,
+                            50vw
+                            "
                         />
                     </animated.div>
                 </div>
