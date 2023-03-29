@@ -1,8 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  exportPathMap: () => ({
+    '/': { page: '/' },
+  }),
   images: {
-    unoptimized: false
+    unoptimized: true
   },
   webpack: (config, options) => {
     config.module.rules.push({

@@ -4,6 +4,10 @@ Footer Styles
 
 .footer-wrapper {
     position: relative;
+    .footer-left,
+    .footer-right {
+        max-height: 465px;
+    }
 }
 
 .footer-left {
@@ -12,12 +16,9 @@ Footer Styles
     background: -webkit-linear-gradient(45deg, rgba(2, 0, 36, 1) 0%, $theme-color-2 0%, $theme-color 100%);
     background: linear-gradient(45deg, rgba(2, 0, 36, 1) 0%, $theme-color-2 0%, $theme-color 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#020024",endColorstr="$theme-color",GradientType=1);
-    // padding: 120px 120px;
-    padding: 77px 120px;
+    padding: 72px 120px;
     position: relative;
     z-index: 2;
-    // margin-right: -15px;
-    // border-top-right-radius: 6px;
 
     @media #{$lg-layout} {
         padding: 120px 80px;
