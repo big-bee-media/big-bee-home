@@ -41,11 +41,11 @@ export default function Home() {
         <div id='home'>
           <div
             className="prv-banner-wrapper"
-            style={{
-              backgroundImage: 'url(images/preview-bg.jpg)',
-              backgroundPosition: 'center'
-            }}
+            style={{ backgroundImage: 'url(images/preview-bg.jpg)' }}
           >
+            {/* <div>
+              <Image src={'/images/preview-bg.jpg'} fill alt='BigBee' objectFit='cover' />
+            </div> */}
             <div className="container-fluid">
               <div className="plr--120">
                 <div className="row">
@@ -53,10 +53,20 @@ export default function Home() {
                     <div className="inner">
                       <animated.div className="logo" style={logoStyles}>
                         <Image src="/icons/logo.png" alt="BigBee" width={'50'} height={'50'} />
-                        <span>BigBee</span>
+                        <div style={{ position: 'relative', height: '40px' }}>
+                          <span className='negative-shadow' style={{ position: 'absolute' }}>BigBee</span>
+                          <span className='negative-shadow' style={{ position: 'absolute' }}>BigBee</span>
+                        </div>
                       </animated.div>
-                      <animated.div className="title" style={sloganStyles}>Embrace your moments</animated.div>
-                      <animated.div className="cta-btn" style={ctaStyles}>
+                      <animated.div className={'slogan'} style={sloganStyles}>
+                        <div className="title">Embrace your moments</div>
+                        <div className="title-stroke">Embrace your moments</div>
+                      </animated.div>
+                      <animated.div className="cta-btn" style={{
+                        ...ctaStyles,
+                        zIndex: 2,
+                        position: 'relative',
+                      }}>
                         <a href="#contact" target="_blank" className="rn-button-style--2 btn-solid">Contact US</a>
                       </animated.div>
                     </div>

@@ -52,3 +52,28 @@
         }
     }
 }
+
+.negative-shadow {
+    text-shadow: -2px -2px 3px #ffffff, -2px 2px 3px #ffffff, 2px 2px 3px #ffffff, 2px -2px 3px #ffffff;
+}
+
+.slogan {
+    position: relative;
+    height: 120px;
+    .title,
+    .title-stroke {
+        position: absolute;
+        font-size: 40px;
+        font-weight: 600;
+        line-height: 3em;
+        color: $theme-color;
+        text-shadow: -2px -2px 2px #ffffff, -2px 2px 2px #ffffff, 2px 2px 2px #ffffff, 2px -2px 2px #ffffff;
+        white-space: nowrap;
+        @media #{$sm-layout} {
+            font-size: 28px;
+            line-height: 2.6em;
+            margin: 32px 0 20px 0;
+            color: "red";
+        }
+    }
+}

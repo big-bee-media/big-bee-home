@@ -55,18 +55,18 @@
         -45deg,
         rgba(0, 0, 0, 0) 7%,
         rgba(0, 0, 0, 0) 50%,
-        rgba(0, 0, 0, 0.5) 100%
+        rgba(0, 0, 0, 0.8) 100%
     ); /* FF3.6-15 */
     background: -webkit-linear-gradient(
         -45deg,
         rgba(0, 0, 0, 0) 7%,
         rgba(0, 0, 0, 0) 50%,
-        rgba(0, 0, 0, 0.5) 100%
+        rgba(0, 0, 0, 0.8) 100%
     ); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(
         135deg,
         rgba(0, 0, 0, 0) 7%,
-        rgba(0, 0, 0, 0) 50%,
+        rgba(0, 0, 0, 0) 80%,
         rgba(0, 0, 0, 0.5) 100%
     ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#80000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
@@ -74,7 +74,7 @@
 
 .prv-banner-wrapper {
     min-height: 100vh;
-    background-position: center center;
+    background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -90,6 +90,7 @@
         padding-top: 120px;
         background-color: #f6f6f6;
         align-items: unset;
+        background-position: -60vh 0px;
     }
     @media #{$md-layout} {
         position: static;
@@ -105,6 +106,7 @@
         padding: 35px;
         position: relative;
         z-index: 1;
+        margin-top: 44vh;
         @media #{$laptop-device} {
             padding: 35px 0;
         }
@@ -121,19 +123,6 @@
             }
             img {
                 max-height: 70px;
-            }
-        }
-        .title {
-            font-size: 40px;
-            white-space: nowrap;
-            color: #515462;
-            line-height: 2em;
-            margin: 50px 0px;
-            @media #{$sm-layout} {
-                font-size: 28px;
-                line-height: 2.6em;
-                margin: 32px 0 20px 0;
-                color: "red";
             }
         }
         .cta-btn {
