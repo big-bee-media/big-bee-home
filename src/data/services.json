@@ -3,36 +3,37 @@
     "icon": "md/MdDirectionsRun",
     "title": "Sport",
     "description": "BigBee Media developed an online platform to detect runners via their BIB number. Let's try it out.",
-    "link": "https://www.bigbee.media"
+    "link": "https://www.bigbee.media",
+    "openNewTab": true
   },
   {
     "icon": "md/MdPerson",
     "title": "Portrait",
     "description": "We create stunning and timeless portraits that showcase your unique personality and style.",
-    "link": ""
+    "link": "#portfolio-Portrait"
   },
   {
     "icon": "md/MdCardGiftcard",
     "title": "Product",
     "description": "BigBee Media always works hard to bring as many exquisiteness of products as possible to the light, with various views of the product.",
-    "link": ""
+    "link": "#portfolio-Product"
   },
   {
     "icon": "md/MdRamenDining",
     "title": "Food & Drink",
     "description": "Our photography captures the mouthwatering essence of your culinary creations, showcasing the textures, colors, and flavors that make your dishes truly unforgettable.",
-    "link": ""
+    "link": "#portfolio-Food & Drink"
   },
   {
     "icon": "md/MdOutlineFavorite",
     "title": "Wedding",
     "description": "Let us help you tell your story through our expertly-crafted images that showcase every detail and emotion of your big day.",
-    "link": ""
+    "link": "#portfolio-Wedding"
   },
   {
     "icon": "md/MdOutlineHotelClass",
     "title": "Event",
     "description": "We capture the magic and excitement of your special occasion with beautiful and lasting memories.",
-    "link": ""
+    "link": "#portfolio-Event"
   }
 ]

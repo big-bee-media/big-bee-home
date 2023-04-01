@@ -93,14 +93,16 @@ const AlbumGrid = ({ images, name }: { images: Image[], name: string }) => {
         if (inViewBelowText) {
             animatedImageApi.start({ opacity: 1, y: 0, scale: 1 })
         }
+
         if (inViewText) {
             textStyleApi.start()
 
         }
-        if (refOfLastImage) {
+
+        if (inViewOfLastImage) {
             showMoreAnimatedStyleApi.start()
         }
-    }, [animatedImageApi, textStyleApi, inViewText, inViewBelowText, showMoreAnimatedStyleApi, refOfLastImage])
+    }, [animatedImageApi, textStyleApi, inViewText, inViewBelowText, showMoreAnimatedStyleApi, inViewOfLastImage])
 
     const renderImage = (generator: TransitionFn<Image, {
         opacity: number;
@@ -126,7 +128,7 @@ const AlbumGrid = ({ images, name }: { images: Image[], name: string }) => {
         ))
     }
 
-    return <div className='pt--80'>
+    return <div className='pt--120' id={`portfolio-${name}`}>
         <animated.div ref={refText} style={textStyle} className="section-title text-center pb--30">
             <h2 ref={refBelowText} className="theme-gradient">{name}</h2>
         </animated.div>
