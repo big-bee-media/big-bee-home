@@ -15,11 +15,9 @@ interface IProps {
 const DynamicFAIcon = ({ icon, ...props }: IProps) => {
     const [iconType, iconName] = icon.split('/');
     const Icon = dynamic(async () => {
-        const m = await import(`@react-icons/all-files/fi/${iconName}`)
-        return m[iconName];
-    }, {
-        ssr: false
-    })
+        const m = await import(`react-icons/${iconType}`)
+        return m[iconName as keyof typeof m] as any;
+    }, { ssr: false })
 
     const value: IconContext = {
         color: props.color,

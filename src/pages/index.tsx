@@ -6,7 +6,7 @@ import ServiceGrid from '@/components/service-grid'
 import PortfolioGrid from '@/components/portfolio'
 import { useSpring, animated } from '@react-spring/web'
 import Image from 'next/image'
-import OurFact from '@/components/OurFact'
+import OurFact from '@/components/our-fact'
 
 
 export default function Home() {
@@ -50,7 +50,7 @@ export default function Home() {
                     <div className="inner">
                       <animated.div className="logo" style={logoStyles}>
                         <Image src="/icons/logo.png" alt="BigBee" width={'50'} height={'50'} />
-                        <span style={{ fontSize: '1.6em', marginLeft: '10px' }}>BigBee</span>
+                        <span>BigBee</span>
                       </animated.div>
                       <animated.div className="title" style={sloganStyles}>Embrace your moments</animated.div>
                       <animated.div className="cta-btn" style={ctaStyles}>
@@ -86,7 +86,7 @@ export default function Home() {
                 <div className="col-lg-12">
                   <div className="section-title text-center service-style--3 mb--30 mb_sm--0">
                     <h2 className="theme-gradient">Our Service</h2>
-                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.</p>
+                    {/* <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.</p> */}
                   </div>
                 </div>
               </div>

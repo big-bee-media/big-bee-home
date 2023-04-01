@@ -1,39 +1,25 @@
-import React, { Component , Fragment } from "react";
+import React, { Component, Fragment } from "react";
 import CountUp from 'react-countup';
 import VisibilitySensor from 'react-visibility-sensor';
+import Fact from '@/data/our-fact.json';
 
-class OurFact extends Component{
+class OurFact extends Component {
     state = {
         didViewCountUp: false
     };
-    onVisibilityChange = isVisible => {
+    onVisibilityChange = (isVisible: boolean) => {
         if (isVisible) {
-            this.setState({didViewCountUp: true});
+            this.setState({ didViewCountUp: true });
         }
     }
-    render(){
-        let Data = [
-            {
-                countNum : 199,
-                countTitle: 'Projects',
-            },
-            {
-                countNum : 5755,
-                countTitle: 'photos and will be more',
-            },
-            {
-                countNum : 69,
-                countTitle: 'Clients',
-            },
-        ];
-
-        return(
+    render() {
+        return (
             <Fragment>
                 <div className="row">
-                    {Data.map( (value, index) => (
+                    {Fact.map((value, index) => (
                         <div className="counterup_style--1 col-lg-4 col-md-4 col-sm-6 col-12" key={index}>
                             <h5 className="counter">
-                                <VisibilitySensor onChange={this.onVisibilityChange} offset={{top:10}} delayedCall>
+                                <VisibilitySensor onChange={this.onVisibilityChange} offset={{ top: 10 }} delayedCall>
                                     <CountUp end={this.state.didViewCountUp ? value.countNum : 0} />
                                 </VisibilitySensor>
                             </h5>

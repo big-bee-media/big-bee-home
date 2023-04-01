@@ -29,3 +29,25 @@
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+
+@keyframes beat {
+    to {
+        transform: scale(1.4);
+    }
+}
+
+.react-viewer-canvas {
+    .loading-wrap {
+        .circle-loading {
+            background-color: whitesmoke;
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            background-image: url(http://localhost:3000/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.e5e8053b.png&w=64&q=75);
+            background-repeat: no-repeat;
+            background-position: center;
+            border: none;
+            animation: beat 0.25s infinite alternate;
+        }
+    }
+}

@@ -1,8 +1,8 @@
 /*==========================
-    Service Area 
+    Service Area
 ===========================*/
 
-.service{
+.service {
     // Service Style One
     &.service__style--1 {
         padding: 40px 0;
@@ -43,7 +43,6 @@
                         margin-bottom: 9px;
                         font-size: 18px;
                     }
-                    
                 }
             }
             p {
@@ -52,7 +51,7 @@
             }
         }
     }
-    
+
     &.service__style--2 {
         padding: 30px 35px;
         @extend %transition;
@@ -78,7 +77,7 @@
             content: "";
             left: 0;
             top: 0;
-            background-image: linear-gradient(to right, $theme-color-2 , $theme-color-3);
+            background-image: linear-gradient(to right, $theme-color-2, $theme-color-3);
             width: 100%;
             height: 100%;
             z-index: -1;
@@ -104,9 +103,9 @@
             @media #{$large-mobile} {
                 color: #ffffff;
             }
-           svg {
-                stroke-width: 1 !important;
-           }
+            //    svg {
+            //         stroke-width: 1 !important;
+            //    }
         }
         .content {
             h3 {
@@ -136,32 +135,31 @@
             }
             p {
                 @extend %transition;
-                color: rgba(29,29,36,0.75);
+                color: rgba(29, 29, 36, 0.75);
                 @media #{$large-mobile} {
                     color: #ffffff;
                 }
-
             }
         }
 
-        &:hover{
+        &:hover {
             box-shadow: 0 10px 25px 10px rgba(0, 0, 0, 0.1);
             transform: translateY(-5px);
             &::before {
                 opacity: 1;
                 visibility: visible;
             }
-            .icon{
+            .icon {
                 color: #ffffff;
             }
-            .content{
+            .content {
                 h3 {
-                    &.title{
-                        @extend %textwhite;        
+                    &.title {
+                        @extend %textwhite;
                     }
                 }
-                p{
-                    @extend %textwhite;  
+                p {
+                    @extend %textwhite;
                 }
             }
         }
@@ -175,13 +173,11 @@
         }
     }
 
-
-
-    // Service Style Four 
+    // Service Style Four
     &.service__style--4 {
         padding: 53px 40px;
         z-index: 2;
-        border-radius: 10px; 
+        border-radius: 10px;
         position: relative;
         @extend %transition;
         background: #191919;
@@ -204,9 +200,9 @@
             content: "";
             left: 0;
             top: 0;
-            background-image: -webkit-gradient(linear,left top,right top,from(#f61b10),to(#ef0963));
-            background-image: -webkit-linear-gradient(left,#f61b10,#ef0963);
-            background-image: linear-gradient(90deg,#f61b10,#ef0963);
+            background-image: -webkit-gradient(linear, left top, right top, from(#f61b10), to(#ef0963));
+            background-image: -webkit-linear-gradient(left, #f61b10, #ef0963);
+            background-image: linear-gradient(90deg, #f61b10, #ef0963);
             width: 100%;
             height: 100%;
             z-index: -1;
@@ -219,7 +215,7 @@
                 visibility: visible;
             }
         }
-        
+
         .icon {
             display: inline-flex;
             font-size: 54px;
@@ -259,7 +255,7 @@
                 }
             }
             p {
-                color: rgba(29,29,36,.75);
+                color: rgba(29, 29, 36, 0.75);
                 @extend %transition;
                 @media #{$large-mobile} {
                     color: #fff;
@@ -267,7 +263,7 @@
             }
         }
         &:hover {
-            box-shadow: 0 10px 25px 10px rgba(0,0,0,.1);
+            box-shadow: 0 10px 25px 10px rgba(0, 0, 0, 0.1);
             -webkit-transform: translateY(-5px);
             transform: translateY(-5px);
             &::before {
@@ -289,13 +285,10 @@
             }
         }
     }
-    
-   
-    
 }
 
 /* ---------------------------
-    Standard Service  
+    Standard Service
 -------------------------------*/
 .standard-service {
     .thumbnai {
@@ -303,7 +296,7 @@
             border-radius: 5px;
         }
     }
-    .content{
+    .content {
         h3 {
             font-size: 19px;
             margin-top: 30px;
@@ -322,14 +315,11 @@
             line-height: 24px;
         }
         a {
-
         }
     }
 }
 
-
-
-.text-center ,
+.text-center,
 .text-left {
     .service {
         &.service__style--2 {
@@ -348,43 +338,42 @@
 }
 
 // Sercvice Style One
-.service-white{
+.service-white {
     // Service Style One
     .service__style--1 {
         z-index: 2;
         .content {
             h4 {
                 &.title {
-                   color: #c6c9d8;
+                    color: #c6c9d8;
                 }
             }
-            p{
+            p {
                 color: #c6c9d8;
-
             }
         }
     }
 }
 
 /*---------------------------
-    Paralax Service Style  
+    Paralax Service Style
 -----------------------------*/
 
 .rn-paralax-service {
     .service__style--2 {
         z-index: 2;
         padding: 40px 40px;
-        background: rgba(255,255,255, 0.3);
+        background: rgba(255, 255, 255, 0.3);
         margin-top: 40px;
         overflow: hidden;
         border: 2px solid transparent;
-        
+
         @media #{$sm-layout} {
             padding: 30px 20px;
             background: transparent;
             margin-top: 30px;
         }
-        
+
         .icon {
             color: #ffffff;
         }
@@ -396,7 +385,7 @@
                 }
             }
             p {
-                color: rgba(255,255,255, 0.75);
+                color: rgba(255, 255, 255, 0.75);
             }
         }
         &:hover {
@@ -412,12 +401,11 @@
 .creative-service-wrapper {
     .row {
         &.creative-service {
-            a{
+            a {
                 display: flex;
                 height: 100%;
             }
             .service {
-
                 &.service__style--2 {
                     margin-top: 30px;
                     background: #f6f6f6;
@@ -425,21 +413,10 @@
             }
         }
     }
-    
 }
 
-
-
-.service-one-wrapper{
+.service-one-wrapper {
     @media #{$md-layout} {
         margin: 0 -40px;
     }
 }
-
-
-
-
-
-
-
-

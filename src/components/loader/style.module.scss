@@ -1,0 +1,12 @@
+.logo-beat {
+    display: flex;
+    align-items: center;
+    font-size: 1.6em;
+    span {
+        margin-left: 10px;
+    }
+    img {
+        max-height: 70px;
+        animation: beat 0.25s infinite alternate;
+    }
+}

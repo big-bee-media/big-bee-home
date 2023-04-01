@@ -112,6 +112,13 @@
             padding: 0;
         }
         .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.6em;
+            color: $theme-color;
+            span {
+                margin-left: 10px;
+            }
             img {
                 max-height: 70px;
             }
