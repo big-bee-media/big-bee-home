@@ -1,14 +1,8 @@
 import React, { Component } from "react";
-import { FaTwitter } from "@react-icons/all-files/fa/FaTwitter";
-import { FaInstagram } from "@react-icons/all-files/fa/FaInstagram";
 import { FaFacebookF } from "@react-icons/all-files/fa/FaFacebookF";
-import { FaLinkedinIn } from "@react-icons/all-files/fa/FaLinkedinIn";
 
 const SocialShare = [
     { Social: <FaFacebookF />, link: 'https://www.facebook.com/thebigbeemedia' },
-    // { Social: <FaLinkedinIn />, link: 'https://www.linkedin.com/' },
-    // { Social: <FaInstagram />, link: 'https://www.instagram.com/' },
-    // { Social: <FaTwitter />, link: 'https://twitter.com/' },
 ]
 
 class Footer extends Component {
@@ -48,6 +42,9 @@ class Footer extends Component {
                                         <div className="col-lg-6 col-sm-6 col-12 mt_mobile--30">
                                             <div className="footer-link">
                                                 <h4>Say Hello</h4>
+                                                <ul className="ft-link">
+                                                    <li><a href="mailto:contact@bigbee.media">contact@bigbee.media</a></li>
+                                                </ul>
                                                 <div className="social-share-inner">
                                                     <ul className="social-share social-style--2 d-flex justify-content-start liststyle mt--15">
                                                         {SocialShare.map((val, i) => (

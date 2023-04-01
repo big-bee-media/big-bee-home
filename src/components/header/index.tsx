@@ -1,9 +1,5 @@
 import React, { Component, useEffect } from "react";
-import { FaTwitter } from "@react-icons/all-files/fa/FaTwitter";
-import { FaInstagram } from "@react-icons/all-files/fa/FaInstagram";
 import { FaFacebookF } from "@react-icons/all-files/fa/FaFacebookF";
-import { FaLinkedinIn } from "@react-icons/all-files/fa/FaLinkedinIn";
-
 import { FiMenu } from "@react-icons/all-files/fi/FiMenu";
 import { FiX } from "@react-icons/all-files/fi/FiX";
 import Scrollspy from 'react-scrollspy'
@@ -14,9 +10,6 @@ import styles from './styles.module.scss';
 
 const SocialShare = [
     { Social: <FaFacebookF />, link: 'https://www.facebook.com/thebigbeemedia' },
-    // { Social: <FaLinkedinIn />, link: 'https://www.linkedin.com/' },
-    // { Social: <FaInstagram />, link: 'https://www.instagram.com/' },
-    // { Social: <FaTwitter />, link: 'https://twitter.com/' },
 ]
 const Header = ({ color }: { color: string }) => {
     const menuTrigger = () => {

@@ -23,11 +23,12 @@ const imageFactory = (album: string, length: number) => {
     }))
 }
 
-const Sport = imageFactory('Sport', 13) ?? []
+const Sport = imageFactory('Sport', 18) ?? []
 const Product = imageFactory('Product', 51) ?? []
-const Portrait = imageFactory('Portrait', 38) ?? []
-const FoodDrink = imageFactory('Food_Drink', 47) ?? []
-const Event = imageFactory('Event', 23) ?? []
+const Portrait = imageFactory('Portrait', 12) ?? []
+const FoodDrink = imageFactory('Food_Drink', 36) ?? []
+const Event = imageFactory('Event', 17) ?? []
+const Wedding = imageFactory('Wedding', 27) ?? []
 
 const albums = [
     { images: Sport, title: 'Sport' },
@@ -35,10 +36,12 @@ const albums = [
     { images: Portrait, title: 'Portrait' },
     { images: FoodDrink, title: 'Food & Drink' },
     { images: Event, title: 'Event' },
+    { images: Wedding, title: 'Wedding' },
 ]
 
 const AlbumGrid = ({ images, name }: { images: Image[], name: string }) => {
     const [refText, inViewText] = useInView()
+    const [refOfLastImage, inViewOfLastImage] = useInView()
     const [showMore, setShowMore] = useState(false)
 
     const [refBelowText, inViewBelowText] = useInView({
@@ -54,6 +57,11 @@ const AlbumGrid = ({ images, name }: { images: Image[], name: string }) => {
         from: { x: 200 },
         to: { x: 0 },
     })
+
+    const [showMoreAnimatedStyle, showMoreAnimatedStyleApi] = useSpring(() => ({
+        from: { opacity: 0 },
+        to: { opacity: 1 },
+    }), [])
 
     const [animatedImage, animatedImageApi] = useTransition(images.slice(0, 6), () => ({
         from: { opacity: 0, y: 100, scale: 0 },
@@ -87,8 +95,12 @@ const AlbumGrid = ({ images, name }: { images: Image[], name: string }) => {
         }
         if (inViewText) {
             textStyleApi.start()
+
         }
-    }, [animatedImageApi, textStyleApi, inViewText, inViewBelowText])
+        if (refOfLastImage) {
+            showMoreAnimatedStyleApi.start()
+        }
+    }, [animatedImageApi, textStyleApi, inViewText, inViewBelowText, showMoreAnimatedStyleApi, refOfLastImage])
 
     const renderImage = (generator: TransitionFn<Image, {
         opacity: number;
@@ -97,7 +109,7 @@ const AlbumGrid = ({ images, name }: { images: Image[], name: string }) => {
     }>, startIndex = 0) => {
         return generator((style, image, state, index) => (
             <div className={'album-item-wrapper'} key={index}>
-                <animated.div className="item" style={style}>
+                <animated.div className="item" style={style} ref={index === 5 ? refOfLastImage : null}>
                     <Image
                         onClick={() => {
                             setSelectedIndex(index + startIndex)
@@ -122,7 +134,7 @@ const AlbumGrid = ({ images, name }: { images: Image[], name: string }) => {
             {renderImage(animatedImage)}
             {showMore && renderImage(animatedRestImage, 6)}
         </div>
-        {!showMore && <animated.div style={textStyle} className='show-more' onClick={() => setShowMore(prev => !prev)}>
+        {!showMore && <animated.div style={showMoreAnimatedStyle} className='show-more' onClick={() => setShowMore(prev => !prev)}>
             <span>See more</span> <BsChevronDoubleDown />
         </animated.div>}
         <Viewer
