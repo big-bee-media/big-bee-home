@@ -122,9 +122,9 @@ const AlbumGrid = ({ images, name }: { images: Image[], name: string }) => {
             {renderImage(animatedImage)}
             {showMore && renderImage(animatedRestImage, 6)}
         </div>
-        {!showMore && <div className='show-more' onClick={() => setShowMore(prev => !prev)}>
+        {!showMore && <animated.div style={textStyle} className='show-more' onClick={() => setShowMore(prev => !prev)}>
             <span>See more</span> <BsChevronDoubleDown />
-        </div>}
+        </animated.div>}
         <Viewer
             downloadable={false}
             activeIndex={selectedIndex}

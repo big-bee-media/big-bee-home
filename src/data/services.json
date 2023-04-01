@@ -2,32 +2,37 @@
   {
     "icon": "md/MdDirectionsRun",
     "title": "Sport",
-    "description": "BigBee Media developed an online platform to detect runners via their BIB number. Let's try it out."
+    "description": "BigBee Media developed an online platform to detect runners via their BIB number. Let's try it out.",
+    "link": "https://www.bigbee.media"
   },
   {
     "icon": "md/MdPerson",
     "title": "Portrait",
-    "description": "We create stunning and timeless portraits that showcase your unique personality and style."
+    "description": "We create stunning and timeless portraits that showcase your unique personality and style.",
+    "link": ""
   },
   {
     "icon": "md/MdCardGiftcard",
     "title": "Product",
-    "description": "BigBee Media always works hard to bring as many exquisiteness of products as possible to the light, with various views of the product."
+    "description": "BigBee Media always works hard to bring as many exquisiteness of products as possible to the light, with various views of the product.",
+    "link": ""
   },
   {
     "icon": "md/MdRamenDining",
     "title": "Food & Drink",
-    "description": "We capture mouth-watering images that showcase your culinary creations' textures, colors, and flavours."
+    "description": "We capture mouth-watering images that showcase your culinary creations' textures, colors, and flavours.",
+    "link": ""
   },
   {
     "icon": "md/MdOutlineFavorite",
     "title": "Wedding",
-    "description": "We capture the love and romance of your big day with a blend of traditional and candid styles, creating a beautiful collection of images that you'll cherish for a lifetime."
+    "description": "We capture the love and romance of your big day with a blend of traditional and candid styles, creating a beautiful collection of images that you'll cherish for a lifetime.",
+    "link": ""
   },
   {
     "icon": "md/MdOutlineHotelClass",
     "title": "Event",
     "description": "We capture the magic and excitement of your special occasion with beautiful and lasting memories.",
-    "description2": "We capture the energy and essence of your event, creating a collection of images that tell the story and capture the memories for years to come."
+    "link": ""
   }
 ]
