@@ -41,7 +41,10 @@ export default function Home() {
         <div id='home'>
           <div
             className="prv-banner-wrapper"
-            style={{ backgroundImage: 'url(images/preview-bg.jpg)' }}
+            style={{
+              backgroundImage: 'url(images/preview-bg.jpg)',
+              backgroundPosition: 'center'
+            }}
           >
             <div className="container-fluid">
               <div className="plr--120">
