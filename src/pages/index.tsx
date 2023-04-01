@@ -14,11 +14,13 @@ export default function Home() {
   const sectionPortfolio = useRef<any>()
 
   const sloganStyles = useSpring({
+    delay: 400,
     from: { opacity: 0, x: '1000px' },
     to: { opacity: 1, x: '0px' },
   })
 
   const logoStyles = useSpring({
+    delay: 400,
     from: { opacity: 0, y: '-1000px' },
     to: { opacity: 1, y: '0px' },
   })
@@ -60,12 +62,14 @@ export default function Home() {
                         <div className="title">Embrace your moments</div>
                         <div className="title-stroke">Embrace your moments</div>
                       </animated.div>
-                      <animated.div className="cta-btn" style={{
-                        ...ctaStyles,
-                        zIndex: 2,
-                        position: 'relative',
-                      }}>
-                        <a href="#contact" target="_blank" className="rn-button-style--2 btn-solid">Contact US</a>
+                      <animated.div className="contact-btn" style={ctaStyles}>
+                        <a href="https://www.facebook.com/thebigbeemedia" target={'_blank'}>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          Contact US
+                        </a>
                       </animated.div>
                     </div>
                   </div>
