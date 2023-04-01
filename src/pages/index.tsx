@@ -7,6 +7,7 @@ import PortfolioGrid from '@/components/portfolio'
 import { useSpring, animated } from '@react-spring/web'
 import Image from 'next/image'
 import OurFact from '@/components/our-fact'
+import BG from '@/assets/images/preview-bg.jpg'
 
 
 export default function Home() {
@@ -41,11 +42,8 @@ export default function Home() {
         <div id='home'>
           <div
             className="prv-banner-wrapper"
-            style={{ backgroundImage: 'url(images/preview-bg.jpg)' }}
+            style={{ backgroundImage: `url(${BG.src})` }}
           >
-            {/* <div>
-              <Image src={'/images/preview-bg.jpg'} fill alt='BigBee' objectFit='cover' />
-            </div> */}
             <div className="container-fluid">
               <div className="plr--120">
                 <div className="row">

@@ -20,19 +20,8 @@ const Header = ({ color }: { color: string }) => {
         document.querySelector('.header-wrapper')?.classList.remove('menu-open')
     }
 
-    useEffect(() => {
-        window.addEventListener('scroll', function () {
-            var value = window.scrollY;
-            if (value > 100) {
-                document?.querySelector('.header--fixed')?.classList.add('sticky')
-            } else {
-                document.querySelector('.header--fixed')?.classList.remove('sticky')
-            }
-        });
-    }, [])
-
     return (
-        <header className={`header-area header-style-two header--fixed ${color}`}>
+        <header className={`header-area header-style-two header--fixed sticky ${color}`}>
             <div className="header-wrapper">
                 <div className="header-left d-flex align-items-center">
                     <div className={styles.logo}>
