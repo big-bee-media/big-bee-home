@@ -96,7 +96,6 @@ const AlbumGrid = ({ images, name }: { images: Image[], name: string }) => {
 
         if (inViewText) {
             textStyleApi.start()
-
         }
 
         if (inViewOfLastImage) {

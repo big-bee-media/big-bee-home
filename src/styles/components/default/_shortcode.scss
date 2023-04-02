@@ -91,6 +91,17 @@ font-family: 'Poppins', sans-serif;
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f81f01', endColorstr='#ee076e',GradientType=1 );
 }
 
+.invert-theme-gradient {
+    background: white;
+    background: -moz-linear-gradient(145deg, white 0%, rgba(238, 196, 7, 0.583) 100%);
+    background: -webkit-linear-gradient(145deg, white 0%, rgba(238, 196, 7, 0.583) 100%);
+    background: linear-gradient(145deg, white 0%, rgba(238, 196, 7, 0.583) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f81f01', endColorstr='#ee076e',GradientType=1 );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
 .rn-text-white {
     color: #c6c9d8 !important;
 }

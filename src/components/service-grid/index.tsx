@@ -8,7 +8,7 @@ const ServiceGrid = ({ className }: { className: string }) => {
                 <div className={className} key={i}>
                     <a href={val.link ? val.link : "#service"} target={val.openNewTab ? '_blank' : ''}>
                         <div className="service service__style--2">
-                            <div className="icon">
+                            <div className="icon" style={{ minHeight: '47px' }}>
                                 {val.icon && <DynamicFAIcon icon={val.icon} />}
                             </div>
                             <div className="content">

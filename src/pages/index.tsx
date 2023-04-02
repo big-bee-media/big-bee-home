@@ -8,6 +8,7 @@ import { useSpring, animated } from '@react-spring/web'
 import Image from 'next/image'
 import OurFact from '@/components/our-fact'
 import BG from '@/assets/images/preview-bg.jpg'
+import { LaptopScreen } from '@/components/lap-top'
 
 
 export default function Home() {
@@ -82,10 +83,10 @@ export default function Home() {
         {/* End Slider Area   */}
 
         {/* Start Portfolio  */}
-        <div ref={sectionPortfolio} id="portfolio" className="poss_relative ptb--120 bg_color--1">
+        <div ref={sectionPortfolio} className="poss_relative ptb--120 bg_color--1">
           <div className='container-fluid'>
             <div className="row">
-              <div className="col-lg-12">
+              <div className="col-lg-12" id="portfolio">
                 <PortfolioGrid />
               </div>
             </div>
@@ -101,7 +102,6 @@ export default function Home() {
                 <div className="col-lg-12">
                   <div className="section-title text-center service-style--3 mb--30 mb_sm--0">
                     <h2 className="theme-gradient">Our Service</h2>
-                    {/* <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.</p> */}
                   </div>
                 </div>
               </div>
@@ -114,6 +114,33 @@ export default function Home() {
           </div>
         </div>
         {/* End our service */}
+
+        <div className="fix" id="bigbee-app">
+          <div className='poss_relative ptb--120'>
+            <div className='container-fluid'>
+              <div className="row">
+                <div className="col-lg-12">
+                  <div className="section-title text-center service-style--3 mb--30 mb_sm--0">
+                    <h2 className='invert-theme-gradient' >BigBee App</h2>
+                    <h5 style={{ color: 'whitesmoke' }}>Stop scrolling, start finding - with our race photo app.</h5>
+                  </div>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-lg-6">
+                  <LaptopScreen />
+                </div>
+                <div className="col-lg-6">
+                  <div className='app-desc'>
+                    <p>The app uses computer vision algorithms to identify the bib numbers worn by runners in race photos, making it easier for runners to find and download their photos from event photographers.</p>
+                    <p>No more scrolling through hundreds of pictures to find the ones you want - our app does the work for you, so you can focus on what matters most.</p>
+                    <p>Overall, a bib detection app that helps runners find their photos after a race is a valuable tool that enhances the race experience and makes it easier for runners to share their achievements with others.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         {/* Start CounterUp Area */}
         <div className="poss_relative rn-counterup-area pt--140 p pb--110 bg_color--1">

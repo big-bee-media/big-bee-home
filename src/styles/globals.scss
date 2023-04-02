@@ -182,3 +182,61 @@
         bottom: 100%;
     }
 }
+
+#bigbee-app {
+    & > div {
+        min-height: 100vh;
+    }
+    position: relative;
+    background: linear-gradient(180deg, rgb(2, 0, 36) 0%, #c47d00 0%, #eca830 100%);
+
+    .app-desc {
+        position: relative;
+        padding: 80px;
+        background: transparent;
+        width: 90%;
+        margin-top: 5%;
+
+        @media #{$md-layout} {
+            width: 100%;
+        }
+
+        @media #{$sm-layout} {
+            width: 100%;
+            padding: 60px 20px;
+        }
+
+        @media #{$lg-layout} {
+            padding: 20px;
+        }
+
+        color: #333333;
+        p + p {
+            margin-top: 40px;
+        }
+        p {
+            position: relative;
+            z-index: 12;
+        }
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.344);
+            border-radius: 20px;
+            transform: skew(-10deg);
+            @media #{$lg-layout} {
+                transform: skew(0deg);
+            }
+            @media #{$md-layout} {
+                transform: skew(0deg);
+            }
+            @media #{$sm-layout} {
+                transform: skew(0deg);
+            }
+        }
+    }
+}

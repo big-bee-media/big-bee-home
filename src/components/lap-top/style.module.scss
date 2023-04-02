@@ -1,0 +1,41 @@
+@import "@/styles/components/default/_variables.scss";
+
+.laptop-frame {
+    position: relative;
+    margin: 80px;
+
+    @media #{$sm-layout} {
+        margin: 10px;
+    }
+
+    .main-frame {
+        width: 80%;
+        height: auto;
+        max-width: unset;
+        @media #{$sm-layout} {
+            margin-top: 40px;
+        }
+    }
+
+    .screen-1 {
+        position: absolute;
+        top: -20px;
+        left: 20%;
+        width: 50%;
+        height: auto;
+        @media #{$sm-layout} {
+            top: 30px;
+        }
+    }
+
+    .screen-2 {
+        position: absolute;
+        top: -40px;
+        left: 40%;
+        width: 50%;
+        height: auto;
+        @media #{$sm-layout} {
+            top: 20px;
+        }
+    }
+}
