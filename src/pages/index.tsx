@@ -121,7 +121,7 @@ export default function Home() {
               <div className="row">
                 <div className="col-lg-12">
                   <div className="section-title text-center service-style--3 mb--30 mb_sm--0">
-                    <h2 className='invert-theme-gradient' >BigBee App</h2>
+                    <h2 className='invert-theme-gradient'>Race App</h2>
                     <h5 style={{ color: 'whitesmoke' }}>Stop scrolling, start finding - with our race photo app.</h5>
                   </div>
                 </div>
@@ -135,6 +135,17 @@ export default function Home() {
                     <p>The app uses computer vision algorithms to identify the bib numbers worn by runners in race photos, making it easier for runners to find and download their photos from event photographers.</p>
                     <p>No more scrolling through hundreds of pictures to find the ones you want - our app does the work for you, so you can focus on what matters most.</p>
                     <p>Overall, a bib detection app that helps runners find their photos after a race is a valuable tool that enhances the race experience and makes it easier for runners to share their achievements with others.</p>
+                    <div className='race-app-btn-wrapper'>
+                      <animated.div className="contact-btn" style={ctaStyles}>
+                        <a href="https://raceapp.bigbee.media/" target={'_blank'}>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          Let&apos;s try
+                        </a>
+                      </animated.div>
+                    </div>
                   </div>
                 </div>
               </div>
