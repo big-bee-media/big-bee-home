@@ -30,13 +30,12 @@ const Header = ({ color }: { color: string }) => {
                         </a>
                     </div>
                     <nav className="mainmenunav d-lg-block ml--50">
-                        <Scrollspy className="mainmenu" items={['home', 'portfolio', 'service', 'contact']} currentClassName="is-current" offset={-200}>
+                        <Scrollspy className="mainmenu" items={['home', 'portfolio', 'service', 'bigbee-app', 'contact']} currentClassName="is-current" offset={-200}>
                             <li><a className='negative-shadow' href="#home">Home</a></li>
                             <li><a className='negative-shadow' href="#portfolio">Portfolio</a></li>
                             <li><a className='negative-shadow' href="#service">Service</a></li>
                             <li><a className='negative-shadow' href="#bigbee-app">Race App</a></li>
                             <li><a className='negative-shadow' target='_blank' href="https://www.facebook.com/thebigbeemedia">Contact</a></li>
-                            {/* <li><a className='negative-shadow' target='_blank' href="https://www.bigbee.media">BIB Detection</a></li> */}
                         </Scrollspy>
                     </nav>
                 </div>
