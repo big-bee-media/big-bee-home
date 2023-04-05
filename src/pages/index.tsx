@@ -54,9 +54,9 @@ export default function Home() {
                     <div className="inner">
                       <animated.div className="logo" style={logoStyles}>
                         <Image src="/icons/logo.png" alt="BigBee" width={'50'} height={'50'} />
-                        <div style={{ position: 'relative', height: '40px' }}>
-                          <span className='negative-shadow' style={{ position: 'absolute' }}>BigBee</span>
-                          <span className='negative-shadow' style={{ position: 'absolute' }}>BigBee</span>
+                        <div style={{ position: 'relative', height: '40px', whiteSpace: 'nowrap' }}>
+                          <span className='negative-shadow' style={{ position: 'absolute' }}>BigBee Media</span>
+                          <span className='negative-shadow' style={{ position: 'absolute' }}>BigBee Media</span>
                         </div>
                       </animated.div>
                       <animated.div className={'slogan'} style={sloganStyles}>
@@ -121,7 +121,9 @@ export default function Home() {
               <div className="row">
                 <div className="col-lg-12">
                   <div className="section-title text-center service-style--3 mb--30 mb_sm--0">
-                    <h2 className='invert-theme-gradient'>Race App</h2>
+                    <a href="https://raceapp.bigbee.media/" target={'_blank'}>
+                      <h2 className='invert-theme-gradient'>Race App</h2>
+                    </a>
                     <h5 style={{ color: 'whitesmoke' }}>Stop scrolling, start finding - with our race photo app.</h5>
                   </div>
                 </div>
