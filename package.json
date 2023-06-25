@@ -40,5 +40,9 @@
   "devDependencies": {
     "raw-loader": "^4.0.2",
     "sass": "^1.58.3"
-  }
+  },
+  "resolutions": {
+    "react-countup/countup.js": "2.5.0"
+  },
+  "packageManager": "yarn@1.22.19"
 }
