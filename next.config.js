@@ -5,6 +5,14 @@ const nextConfig = {
     '/': { page: '/' },
   }),
   images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'api.bigbee.media',
+        port: '',
+        pathname: '/api/**',
+      },
+    ],
     unoptimized: false
   },
   webpack: (config, options) => {
