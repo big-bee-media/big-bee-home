@@ -9,6 +9,7 @@ import Image from 'next/image'
 import OurFact from '@/components/our-fact'
 import BG from '@/assets/images/preview-bg.jpg'
 import { LaptopScreen } from '@/components/lap-top'
+import { firstAlbums, secondAlbums } from '@/const'
 
 
 export default function Home() {
@@ -82,38 +83,17 @@ export default function Home() {
         </div>
         {/* End Slider Area   */}
 
-        {/* Start Portfolio  */}
+        {/* Start Portfolio 1 */}
         <div ref={sectionPortfolio} className="poss_relative ptb--120 bg_color--1">
           <div className='container-fluid'>
             <div className="row">
               <div className="col-lg-12" id="portfolio">
-                <PortfolioGrid />
+                <PortfolioGrid albums={firstAlbums} />
               </div>
             </div>
           </div>
         </div>
-        {/* End Portfolio  */}
-
-        {/* Our service */}
-        <div id="service" className="fix">
-          <div className="poss_relative ptb--120 bg_color--5" >
-            <div className="container">
-              <div className="row">
-                <div className="col-lg-12">
-                  <div className="section-title text-center service-style--3 mb--30 mb_sm--0">
-                    <h2 className="theme-gradient">Our Service</h2>
-                  </div>
-                </div>
-              </div>
-              <div className="row creative-service">
-                <div className="col-lg-12">
-                  <ServiceGrid className='col-lg-4 col-md-6 col-sm-6 col-12 text-left' />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* End our service */}
+        {/* End Portfolio 1 */}
 
         <div className="fix" id="bigbee-app">
           <div className='poss_relative ptb--120'>
@@ -154,6 +134,39 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        {/* Start Portfolio 2 */}
+        <div ref={sectionPortfolio} className="poss_relative ptb--120 bg_color--1">
+          <div className='container-fluid'>
+            <div className="row">
+              <div className="col-lg-12" id="portfolio">
+                <PortfolioGrid albums={secondAlbums} />
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* End Portfolio 2 */}
+
+        {/* Our service */}
+        <div id="service" className="fix">
+          <div className="poss_relative ptb--120 bg_color--5" >
+            <div className="container">
+              <div className="row">
+                <div className="col-lg-12">
+                  <div className="section-title text-center service-style--3 mb--30 mb_sm--0">
+                    <h2 className="theme-gradient">Our Service</h2>
+                  </div>
+                </div>
+              </div>
+              <div className="row creative-service">
+                <div className="col-lg-12">
+                  <ServiceGrid className='col-lg-4 col-md-6 col-sm-6 col-12 text-left' />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* End our service */}
 
         {/* Start CounterUp Area */}
         <div className="poss_relative rn-counterup-area pt--140 p pb--110 bg_color--1">

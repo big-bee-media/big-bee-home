@@ -1,55 +1,19 @@
-import React, { useEffect, useState } from 'react'
-import Image from 'next/image'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import { default as NextImage } from 'next/image'
 import dynamic from 'next/dynamic';
 import { animated, TransitionFn, useInView, useSpring, useSpringRef, useTransition } from '@react-spring/web';
 import { BsChevronDoubleDown } from "@react-icons/all-files/bs/BsChevronDoubleDown";
+import { AlbumType, Image } from '@/type';
 
-type Image = {
-    id: string;
-    src: string;
-    category: string;
-}
 
 const Viewer = dynamic(
     () => import('react-viewer'),
     { ssr: false }
 )
 
-const imageFactory = (album: string, length: number) => {
-    return new Array(length).fill(1).map((item, index) => ({
-        id: `img_${index}`,
-        src: `/portfolio/${album}/img-${index + 1}.jpg`,
-        category: album
-    }))
-}
-
-const Sport = imageFactory('Sport', 18) ?? []
-const Product = imageFactory('Product', 51) ?? []
-const Portrait = imageFactory('Portrait', 12) ?? []
-const FoodDrink = imageFactory('Food_Drink', 36) ?? []
-const Event = imageFactory('Event', 17) ?? []
-const Wedding = imageFactory('Wedding', 27) ?? []
-
-type AlbumType = {
-    title: string,
-    images?: Image[],
-    link?: string
-    seeMoreLink?: string
-}
-
 const getImageUrl = (src: string) => {
     return `https://api.bigbee.media/api/v1${src}?page=0&limit=6`
 }
-
-const albums: AlbumType[] = [
-    { images: Sport, title: 'Sport' },
-    { title: 'Recent images', link: 'https://api.bigbee.media/api/v1/photo', seeMoreLink: 'https://raceapp.bigbee.media/' },
-    { images: Product, title: 'Product' },
-    { images: Portrait, title: 'Portrait' },
-    { images: FoodDrink, title: 'Food & Drink' },
-    { images: Event, title: 'Event' },
-    { images: Wedding, title: 'Wedding' },
-]
 
 const AlbumGrid = ({ images: defaultImages, name, link, seeMoreLink }: { images?: Image[], name: string, link?: string, seeMoreLink?: string }) => {
     const [refText, inViewText] = useInView()
@@ -76,7 +40,9 @@ const AlbumGrid = ({ images: defaultImages, name, link, seeMoreLink }: { images?
         to: { opacity: 1 },
     }), [])
 
-    const [animatedImage, animatedImageApi] = useTransition(images.slice(0, 6), () => ({
+    const _images = useMemo(() => images.slice(0, 6), [images])
+
+    const [animatedImage, animatedImageApi] = useTransition(_images, () => ({
         from: { opacity: 0, y: 100, scale: 0 },
         enter: { opacity: 1, y: 0, scale: 1 },
         leave: { opacity: 0, y: 100, scale: 0 },
@@ -84,7 +50,7 @@ const AlbumGrid = ({ images: defaultImages, name, link, seeMoreLink }: { images?
             mass: 5, tension: 500, friction: 100,
         },
         trail: 120,
-        deps: [images]
+        deps: [_images]
     }))
 
     const [animatedRestImage, animatedRestImageApi] = useTransition(images.slice(6), () => ({
@@ -103,7 +69,7 @@ const AlbumGrid = ({ images: defaultImages, name, link, seeMoreLink }: { images?
         }
     }, [showMore])
 
-    const getImages = async (link: string) => {
+    const getImages = useCallback(async (link: string) => {
         const resp = await fetch(link)
         const data = await resp.json()
         const images = data.data.map((item: any) => ({
@@ -111,14 +77,14 @@ const AlbumGrid = ({ images: defaultImages, name, link, seeMoreLink }: { images?
             src: getImageUrl(item.preview.url),
             category: 'portfolio'
         }))
-        setImages(images);
-    }
+        setImages([...images.slice(0, 6)]);
+    }, [])
 
     useEffect(() => {
         if (link) {
             getImages(link)
         }
-    }, [link])
+    }, [getImages, link])
 
     useEffect(() => {
         if (inViewBelowText) {
@@ -140,11 +106,10 @@ const AlbumGrid = ({ images: defaultImages, name, link, seeMoreLink }: { images?
         scale: number;
     }>, startIndex = 0) => {
         return generator((style, image, state, index) => {
-            console.log('Index', index)
             return (
                 <div className={'album-item-wrapper'} key={image.id}>
                     <animated.div className="item" style={style} ref={index === 5 ? refOfLastImage : null}>
-                        <Image
+                        <NextImage
                             onClick={() => {
                                 setSelectedIndex(index + startIndex)
                                 setIsOpen(true)
@@ -161,7 +126,6 @@ const AlbumGrid = ({ images: defaultImages, name, link, seeMoreLink }: { images?
         })
     }
 
-    console.log('Render album', name, animatedImage)
     return <div className='pt--120' id={`portfolio-${name}`}>
         <animated.div ref={refText} style={textStyle} className="section-title text-center pb--30">
             <h2 ref={refBelowText} className="theme-gradient">{name}</h2>
@@ -195,7 +159,7 @@ const AlbumGrid = ({ images: defaultImages, name, link, seeMoreLink }: { images?
     </div >
 }
 
-const PortfolioGrid = () => {
+const PortfolioGrid = ({ albums }: { albums: AlbumType[] }) => {
     return (
         <div className='portfolio-wrapper'>
             {
