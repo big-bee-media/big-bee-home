@@ -8,7 +8,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'api.bigbee.media',
+        hostname: 'api.bigbee.ltd',
         port: '',
         pathname: '/api/**',
       },
