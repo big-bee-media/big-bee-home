@@ -20,6 +20,7 @@
     "@types/react-dom": "18.0.11",
     "@types/react-scrollspy": "^3.3.5",
     "@types/react-tabs": "^5.0.5",
+    "@vercel/analytics": "^1.5.0",
     "bootstrap": "^5.2.3",
     "eslint": "8.35.0",
     "eslint-config-next": "13.2.3",
