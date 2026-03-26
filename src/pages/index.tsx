@@ -121,7 +121,7 @@ export default function Home() {
           </div>
         </div>
         {/* End Portfolio 1 */}
-
+        {/* 
         <div className="fix" id="bigbee-app">
           <div className="poss_relative ptb--120">
             <div className="container-fluid">
@@ -184,7 +184,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Start Portfolio 2 */}
         <div
@@ -228,7 +228,7 @@ export default function Home() {
             <div className="row">
               <div className="col-lg-12">
                 <div className="section-title text-center service-style--3 mb--30 mb_sm--0">
-                  <h2 style={{ color: "#1f1f2582" }}>Our Fun Facts</h2>
+                  <h2 style={{ color: "#1f1f2582" }}>Our Facts</h2>
                 </div>
               </div>
             </div>

@@ -1,14 +1,14 @@
 [
-    {
-        "countNum": 100,
-        "countTitle": "Projects"
-    },
-    {
-        "countNum": 300000,
-        "countTitle": "Photos and will be more"
-    },
-    {
-        "countNum": 50,
-        "countTitle": "Clients"
-    }
+  {
+    "countNum": 500,
+    "countTitle": "Projects"
+  },
+  {
+    "countNum": 3000000,
+    "countTitle": "Photos and will be more"
+  },
+  {
+    "countNum": 500,
+    "countTitle": "Clients"
+  }
 ]
