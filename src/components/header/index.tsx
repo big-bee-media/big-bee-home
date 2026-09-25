@@ -28,9 +28,9 @@ const Header = ({ color }: { color: string }) => {
       <div className="header-wrapper">
         <div className="header-left d-flex align-items-center">
           <div className={styles.logo}>
-            <a href={"/"}>
+            <Link href="/">
               <Image src={LOGO} alt="BigBee" height={"50"} width={"50"} />
-            </a>
+            </Link>
           </div>
           <nav className="mainmenunav d-lg-block ml--50">
             <Scrollspy
@@ -40,9 +40,9 @@ const Header = ({ color }: { color: string }) => {
               offset={-200}
             >
               <li>
-                <a className="negative-shadow" href="#home">
+                <Link className="negative-shadow" href="/#home">
                   Home
-                </a>
+                </Link>
               </li>
               <li>
                 <a
@@ -54,9 +54,9 @@ const Header = ({ color }: { color: string }) => {
                 </a>
               </li>
               <li>
-                <a className="negative-shadow" href="#service">
+                <Link className="negative-shadow" href="/#service">
                   Service
-                </a>
+                </Link>
               </li>
               <li>
                 <a
@@ -66,15 +66,6 @@ const Header = ({ color }: { color: string }) => {
                 >
                   Race App
                 </a>
-              </li>
-              <li>
-                <Link
-                  className="negative-shadow"
-                  href="/brief"
-                  style={{ color: '#ffd700', fontWeight: 'bold' }}
-                >
-                  ★ Start A Project
-                </Link>
               </li>
               <li>
                 <a

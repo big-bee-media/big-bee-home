@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import Header from '@/components/header';
 import styles from './styles.module.scss';
 
 // Monochrome SVG Icons
@@ -521,9 +523,20 @@ export const PROJECT_CATEGORIES = [
 ];
 
 export default function BriefPage() {
+  const router = useRouter();
   const [currentStep, setCurrentStep] = useState(1);
-  const [selectedCategory, setSelectedCategory] = useState<string>('sport_marathon');
+  const [selectedCategory, setSelectedCategory] = useState<string>('');
   const [dynamicThumbnails, setDynamicThumbnails] = useState<Record<string, string>>({});
+
+  // Sync category from URL (e.g. /brief/sport_marathon or /brief?category=sport_marathon)
+  useEffect(() => {
+    if (!router.isReady) return;
+    const categoryParam = (router.query.category as string) || '';
+    if (categoryParam && PROJECT_CATEGORIES.some((c) => c.id === categoryParam)) {
+      setSelectedCategory(categoryParam);
+      setCurrentStep(2);
+    }
+  }, [router.isReady, router.query.category]);
 
   useEffect(() => {
     // Fetch categories from API to update thumbnails dynamically
@@ -546,6 +559,7 @@ export default function BriefPage() {
 
   // Form states
   const [specificAnswers, setSpecificAnswers] = useState<Record<string, any>>({});
+  const [customAnswers, setCustomAnswers] = useState<Record<string, string>>({});
   const [executionTime, setExecutionTime] = useState('');
   const [budget, setBudget] = useState('');
   const [additionalRequests, setAdditionalRequests] = useState('');
@@ -561,6 +575,20 @@ export default function BriefPage() {
   const [errorMessage, setErrorMessage] = useState('');
 
   const currentCategoryData = PROJECT_CATEGORIES.find((c) => c.id === selectedCategory) || PROJECT_CATEGORIES[0];
+
+  const handleSelectCategory = (categoryId: string) => {
+    setSelectedCategory(categoryId);
+    setCurrentStep(2);
+    router.push(`/brief/${categoryId}`, undefined, { shallow: true });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleBackToStep1 = () => {
+    setSelectedCategory('');
+    setCurrentStep(1);
+    router.push('/brief', undefined, { shallow: true });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const handleCheckboxChange = (questionId: string, option: string) => {
     const currentList: string[] = specificAnswers[questionId] || [];
@@ -599,8 +627,12 @@ export default function BriefPage() {
 
   const handlePrevStep = () => {
     setErrorMessage('');
-    setCurrentStep((prev) => Math.max(1, prev - 1));
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (currentStep === 2) {
+      handleBackToStep1();
+    } else {
+      setCurrentStep((prev) => Math.max(1, prev - 1));
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -618,6 +650,15 @@ export default function BriefPage() {
 
     setIsSubmitting(true);
 
+    const resolvedSpecificAnswers: Record<string, any> = { ...specificAnswers };
+    Object.keys(resolvedSpecificAnswers).forEach((key) => {
+      if (resolvedSpecificAnswers[key] === 'Khác') {
+        resolvedSpecificAnswers[key] = customAnswers[key]
+          ? `Khác: ${customAnswers[key]}`
+          : 'Khác';
+      }
+    });
+
     const payload = {
       category: currentCategoryData.title,
       brandName,
@@ -626,7 +667,7 @@ export default function BriefPage() {
       email,
       socialLink,
       serviceType: currentCategoryData.tag,
-      specificAnswers,
+      specificAnswers: resolvedSpecificAnswers,
       executionTime,
       budget,
       additionalRequests,
@@ -664,74 +705,35 @@ export default function BriefPage() {
         />
       </Head>
 
+      <Header color="color-black" />
       <div className={styles.briefContainer}>
         <div className={styles.bgDecor1} />
         <div className={styles.bgDecor2} />
 
         <div className={styles.wrapper}>
-          {/* Top Bar with Logo */}
-          <div className={styles.topBar}>
-            <Link href="/" className={styles.backBtn}>
-              ← Quay lại Trang chủ
-            </Link>
-
-            <Link href="/" className={styles.brandLogoWrapper}>
-              <Image
-                src="/icons/logo.png"
-                alt="BigBee Media"
-                width={38}
-                height={38}
-                style={{ borderRadius: '50%', background: '#fff', border: '1px solid #d4af37' }}
-              />
-              <span style={{ color: '#0f172a', fontWeight: 800, fontSize: '18px', letterSpacing: '0.5px' }}>
-                BIGBEE <span style={{ color: '#d4af37' }}>MEDIA</span>
-              </span>
-            </Link>
-          </div>
-
           {!isSuccess ? (
             <>
-              {/* Header */}
-              <div className={styles.headerSection}>
-                <div className={styles.badge}>MÔ TẢ DỰ ÁN CỦA BẠN</div>
-                <h1>Pre-Photoshoot Brief</h1>
-                <p>
-                  Hãy chia sẻ ý tưởng và mong muốn của bạn. BigBee Media sẽ nghiên cứu và xây dựng giải pháp hình ảnh / video tối ưu nhất cho bạn.
-                </p>
-              </div>
-
-              {/* Stepper */}
-              <div className={styles.stepperContainer}>
-                <div
-                  className={styles.progressBar}
-                  style={{ width: `${((currentStep - 1) / 3) * 100}%` }}
-                />
-                {[
-                  { step: 1, label: 'Chọn thể loại dự án' },
-                  { step: 2, label: 'Mô tả chi tiết' },
-                  { step: 3, label: 'Kế hoạch & Ngân sách' },
-                  { step: 4, label: 'Thông tin liên hệ' },
-                ].map((item) => (
-                  <div
-                    key={item.step}
-                    className={`${styles.stepItem} ${
-                      currentStep === item.step
-                        ? styles.active
-                        : currentStep > item.step
-                        ? styles.completed
-                        : ''
-                    }`}
-                    onClick={() => {
-                      if (currentStep > item.step) setCurrentStep(item.step);
-                    }}
-                  >
-                    <div className={styles.stepNumber}>
-                      {currentStep > item.step ? '✓' : item.step}
+              {/* Active Category Header (Step 2+) */}
+              {currentStep > 1 && (
+                <div className={styles.categoryActiveHeader}>
+                  <div className={styles.categoryActiveInfo}>
+                    <div className={styles.categoryIconBadge}>
+                      {CategoryIcons[currentCategoryData.id]}
                     </div>
-                    <div className={styles.stepLabel}>{item.label}</div>
+                    <div>
+                      <div className={styles.categorySubtitle}>THỂ LOẠI DỰ ÁN ĐANG CHỌN</div>
+                      <h1 className={styles.categoryActiveTitle}>{currentCategoryData.title}</h1>
+                    </div>
                   </div>
-                ))}
-              </div>
+                  <button
+                    type="button"
+                    className={styles.changeCategoryBtn}
+                    onClick={handleBackToStep1}
+                  >
+                    ← Đổi thể loại dự án
+                  </button>
+                </div>
+              )}
 
               {/* Error Alert */}
               {errorMessage && (
@@ -751,13 +753,13 @@ export default function BriefPage() {
                 </div>
               )}
 
-              {/* Form Card */}
+              {/* Form Container */}
               <div className={styles.formCard}>
                 {/* STEP 1: CHỌN THỂ LOẠI DỰ ÁN (5 CARDS PER ROW, 2 ROWS = 10 CARDS) */}
                 {currentStep === 1 && (
                   <div>
                     <div className={styles.sectionTitle}>
-                      <span>01.</span> Bạn muốn thực hiện dự án thuộc thể loại nào?
+                      Chọn dự án bạn muốn BIGBEE thực hiện
                     </div>
                     <div className={styles.sectionSubtitle}>
                       Chọn một danh mục phù hợp nhất để hiển thị bảng câu hỏi chi tiết tương ứng.
@@ -770,7 +772,7 @@ export default function BriefPage() {
                           className={`${styles.categoryCard} ${
                             selectedCategory === cat.id ? styles.selected : ''
                           }`}
-                          onClick={() => setSelectedCategory(cat.id)}
+                          onClick={() => handleSelectCategory(cat.id)}
                         >
                           {/* Card Thumbnail Image */}
                           <img
@@ -787,25 +789,21 @@ export default function BriefPage() {
                           </div>
 
                           <div className={styles.cardDesc}>{cat.description}</div>
-                          <div className={styles.cardTag}>{cat.tag}</div>
+                          <div className={styles.cardStartLink}>
+                            <span>Bắt đầu</span>
+                            <span className={styles.arrowIcon}>→</span>
+                          </div>
                         </div>
                       ))}
-                    </div>
-
-                    <div className={styles.buttonGroup}>
-                      <div />
-                      <button className={styles.nextBtn} onClick={handleNextStep}>
-                        Tiếp tục: Mô tả chi tiết →
-                      </button>
                     </div>
                   </div>
                 )}
 
                 {/* STEP 2: BỘ CÂU HỎI MÔ TẢ CHI TIẾT THEO THỂ LOẠI */}
                 {currentStep === 2 && (
-                  <div>
+                  <div className={styles.formContentBox}>
                     <div className={styles.sectionTitle}>
-                      <span>02.</span> Mô tả chi tiết: {currentCategoryData.title}
+                      Mô tả chi tiết: {currentCategoryData.title}
                     </div>
                     <div className={styles.sectionSubtitle}>
                       Các thông tin này giúp ekip BigBee chuẩn bị thiết bị, nhân sự và giải pháp chính xác nhất.
@@ -818,19 +816,35 @@ export default function BriefPage() {
                         </label>
 
                         {q.type === 'select' && (
-                          <select
-                            value={specificAnswers[q.id] || ''}
-                            onChange={(e) =>
-                              setSpecificAnswers({ ...specificAnswers, [q.id]: e.target.value })
-                            }
-                          >
-                            <option value="">-- Vui lòng chọn một phương án --</option>
-                            {q.options.map((opt, i) => (
-                              <option key={i} value={opt}>
-                                {opt}
-                              </option>
-                            ))}
-                          </select>
+                          <>
+                            <select
+                              value={specificAnswers[q.id] || ''}
+                              onChange={(e) =>
+                                setSpecificAnswers({ ...specificAnswers, [q.id]: e.target.value })
+                              }
+                            >
+                              <option value="">-- Vui lòng chọn một phương án --</option>
+                              {q.options.map((opt, i) => (
+                                <option key={i} value={opt}>
+                                  {opt}
+                                </option>
+                              ))}
+                              {!q.options.some((opt) => opt.toLowerCase().includes('khác')) && (
+                                <option value="Khác">Khác (Tự nhập chi tiết)</option>
+                              )}
+                            </select>
+                            {specificAnswers[q.id] === 'Khác' && (
+                              <input
+                                type="text"
+                                placeholder="Nhập chi tiết loại hình của bạn..."
+                                value={customAnswers[q.id] || ''}
+                                onChange={(e) =>
+                                  setCustomAnswers({ ...customAnswers, [q.id]: e.target.value })
+                                }
+                                style={{ marginTop: '12px' }}
+                              />
+                            )}
+                          </>
                         )}
 
                         {q.type === 'radio' && (
@@ -887,9 +901,9 @@ export default function BriefPage() {
 
                 {/* STEP 3: THỜI GIAN, NGÂN SÁCH & YÊU CẦU KHÁC */}
                 {currentStep === 3 && (
-                  <div>
+                  <div className={styles.formContentBox}>
                     <div className={styles.sectionTitle}>
-                      <span>03.</span> Thời gian, Ngân sách & Mong muốn khác
+                      Thời gian, Ngân sách & Mong muốn khác
                     </div>
                     <div className={styles.sectionSubtitle}>
                       Hãy cho BigBee biết lộ trình dự kiến và các mong muốn đặc biệt của bạn.
@@ -974,9 +988,9 @@ export default function BriefPage() {
 
                 {/* STEP 4: THÔNG TIN LIÊN HỆ */}
                 {currentStep === 4 && (
-                  <form onSubmit={handleSubmit}>
+                  <form onSubmit={handleSubmit} className={styles.formContentBox}>
                     <div className={styles.sectionTitle}>
-                      <span>04.</span> Thông tin liên hệ của bạn
+                      Thông tin liên hệ của bạn
                     </div>
                     <div className={styles.sectionSubtitle}>
                       BigBee Media sẽ bảo mật thông tin và cử chuyên viên tư vấn liên hệ phản hồi trong 2-4 giờ.
@@ -1056,7 +1070,7 @@ export default function BriefPage() {
             </>
           ) : (
             /* SUCCESS CONFIRMATION VIEW */
-            <div className={`${styles.formCard} ${styles.successCard}`}>
+            <div className={`${styles.formContentBox} ${styles.successCard}`}>
               <div className={styles.successIcon}>✓</div>
               <h2>Gửi Pre-Photoshoot Brief Thành Công!</h2>
               <p>
