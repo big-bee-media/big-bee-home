@@ -1,4 +1,5 @@
 import React, { Component, useEffect } from "react";
+import Link from "next/link";
 import { FaFacebookF } from "@react-icons/all-files/fa/FaFacebookF";
 import { FiMenu } from "@react-icons/all-files/fi/FiMenu";
 import { FiX } from "@react-icons/all-files/fi/FiX";
@@ -67,6 +68,15 @@ const Header = ({ color }: { color: string }) => {
                 </a>
               </li>
               <li>
+                <Link
+                  className="negative-shadow"
+                  href="/brief"
+                  style={{ color: '#ffd700', fontWeight: 'bold' }}
+                >
+                  ★ Start A Project
+                </Link>
+              </li>
+              <li>
                 <a
                   className="negative-shadow"
                   target="_blank"
@@ -78,7 +88,25 @@ const Header = ({ color }: { color: string }) => {
             </Scrollspy>
           </nav>
         </div>
-        <div className="header-right">
+        <div className="header-right d-flex align-items-center">
+          <Link
+            href="/brief"
+            className="d-none d-md-inline-block"
+            style={{
+              background: 'linear-gradient(135deg, #d4af37 0%, #f59e0b 100%)',
+              color: '#000',
+              fontWeight: 700,
+              fontSize: '12px',
+              padding: '8px 20px',
+              borderRadius: '20px',
+              textTransform: 'uppercase',
+              textDecoration: 'none',
+              marginRight: '15px',
+              boxShadow: '0 4px 15px rgba(212, 175, 55, 0.3)'
+            }}
+          >
+            START NOW
+          </Link>
           <div className="social-share-inner">
             <ul className="social-share social-style--2 color-black d-flex justify-content-start liststyle">
               {SocialShare.map((val, i) => (

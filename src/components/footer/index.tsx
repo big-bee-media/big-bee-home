@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Link from "next/link";
 import { FaFacebookF } from "@react-icons/all-files/fa/FaFacebookF";
 
 const SocialShare = [
@@ -17,9 +18,14 @@ class Footer extends Component {
                                     <div className="inner">
                                         <span>Ready To Do This</span>
                                         <h2>Let&apos;s get <br /> to work</h2>
-                                        <a className="rn-button-style--2" href="https://www.facebook.com/thebigbeemedia" target={'_blank'}>
-                                            <span>Contact Us</span>
-                                        </a>
+                                        <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap', marginTop: '20px' }}>
+                                            <Link className="rn-button-style--2" href="/brief">
+                                                <span>START NOW</span>
+                                            </Link>
+                                            <a className="rn-button-style--2" href="https://www.facebook.com/thebigbeemedia" target={'_blank'} rel="noreferrer">
+                                                <span>Contact Us</span>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
