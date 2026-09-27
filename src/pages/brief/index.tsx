@@ -524,6 +524,7 @@ export const PROJECT_CATEGORIES = [
 
 export default function BriefPage() {
   const router = useRouter();
+  const [categoriesList, setCategoriesList] = useState(PROJECT_CATEGORIES);
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedCategory, setSelectedCategory] = useState<string>('');
   const [dynamicThumbnails, setDynamicThumbnails] = useState<Record<string, string>>({});
@@ -532,13 +533,31 @@ export default function BriefPage() {
   useEffect(() => {
     if (!router.isReady) return;
     const categoryParam = (router.query.category as string) || '';
-    if (categoryParam && PROJECT_CATEGORIES.some((c) => c.id === categoryParam)) {
+    if (categoryParam && categoriesList.some((c) => c.id === categoryParam)) {
       setSelectedCategory(categoryParam);
       setCurrentStep(2);
     }
-  }, [router.isReady, router.query.category]);
+  }, [router.isReady, router.query.category, categoriesList]);
 
   useEffect(() => {
+    // Fetch dynamic categories config from backend
+    fetch('/api/brief-config')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success && Array.isArray(data.data) && data.data.length > 0) {
+          const mapped = data.data.map((item: any) => ({
+            id: item.slug || item.id,
+            title: item.title,
+            tag: item.tag || 'Service',
+            image: item.image || '/portfolio/Event/img-1.jpg',
+            description: item.description || '',
+            questions: item.questions || [],
+          }));
+          setCategoriesList(mapped);
+        }
+      })
+      .catch((err) => console.warn('Failed to load dynamic brief config from API:', err));
+
     // Fetch categories from API to update thumbnails dynamically
     fetch('/api/portfolio/categories')
       .then((res) => res.json())
@@ -574,7 +593,7 @@ export default function BriefPage() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
-  const currentCategoryData = PROJECT_CATEGORIES.find((c) => c.id === selectedCategory) || PROJECT_CATEGORIES[0];
+  const currentCategoryData = categoriesList.find((c) => c.id === selectedCategory) || categoriesList[0];
 
   const handleSelectCategory = (categoryId: string) => {
     setSelectedCategory(categoryId);
@@ -718,7 +737,7 @@ export default function BriefPage() {
                 <div className={styles.categoryActiveHeader}>
                   <div className={styles.categoryActiveInfo}>
                     <div className={styles.categoryIconBadge}>
-                      {CategoryIcons[currentCategoryData.id]}
+                      {CategoryIcons[currentCategoryData.id] || CategoryIcons.sport_marathon}
                     </div>
                     <div>
                       <div className={styles.categorySubtitle}>THỂ LOẠI DỰ ÁN ĐANG CHỌN</div>
@@ -766,7 +785,7 @@ export default function BriefPage() {
                     </div>
 
                     <div className={styles.categoryGrid}>
-                      {PROJECT_CATEGORIES.map((cat) => (
+                      {categoriesList.map((cat) => (
                         <div
                           key={cat.id}
                           className={`${styles.categoryCard} ${
@@ -776,14 +795,14 @@ export default function BriefPage() {
                         >
                           {/* Card Thumbnail Image */}
                           <img
-                            src={dynamicThumbnails[cat.id] || cat.image}
+                            src={dynamicThumbnails[cat.id] || cat.image || '/portfolio/Event/img-1.jpg'}
                             alt={cat.title}
                             className={styles.cardThumbnail}
                           />
 
                           <div className={styles.cardHeaderRow}>
                             <div className={styles.cardIconWrapper}>
-                              {CategoryIcons[cat.id]}
+                              {CategoryIcons[cat.id] || CategoryIcons.sport_marathon}
                             </div>
                             <div className={styles.cardTitle}>{cat.title}</div>
                           </div>
